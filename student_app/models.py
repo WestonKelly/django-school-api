@@ -1,5 +1,6 @@
 from django.db import models
 from django.core import validators as v
+from django.core.exceptions import ValidationError
 from .validators import validate_name_format, validate_school_email, validate_combination_format
 
 # Create your models here.
@@ -28,6 +29,25 @@ class Student(models.Model):
             status = False
         self.good_student = status
         self.save()
+
+    def add_subject(self, subject_id):
+        subject_length = self.subjects.count()
+        if subject_length < 8:
+            self.subjects.add(subject_id)
+        else:
+            raise ValidationError("This students class schedule is full!")
+
+    def remove_subject(self, subject_id):
+        if self.subjects.exists():
+            subject = self.subjects.get(pk=subject_id)
+            self.subjects.remove(subject)
+        else:
+            raise ValidationError("This student's class schedule is empty!")
+
+
+
+        
+
 
 
 # default=None unique=True
