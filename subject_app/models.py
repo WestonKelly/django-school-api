@@ -22,10 +22,11 @@ class Subject(models.Model):
             raise ValidationError("This subject id full!")
 
     def drop_a_student(self, student_id):
+        error_message = "This subject is empty!"
         if self.students.exists():
             Student = apps.get_model('student_app', 'Student')
             student = Student.objects.get(pk=student_id)
             self.students.remove(student)
             student.grades.filter(subject=self).delete()
         else:
-            raise ValidationError("This subject is empty!")
+            raise Exception(error_message)

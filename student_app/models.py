@@ -31,18 +31,20 @@ class Student(models.Model):
         self.save()
 
     def add_subject(self, subject_id):
+        error_message = "This students class schedule is full!"
         subject_length = self.subjects.count()
         if subject_length < 8:
             self.subjects.add(subject_id)
         else:
-            raise ValidationError("This students class schedule is full!")
+            raise Exception(error_message)
 
     def remove_subject(self, subject_id):
+        error_message = "This students class schedule is empty!"
         if self.subjects.exists():
             subject = self.subjects.get(pk=subject_id)
             self.subjects.remove(subject)
         else:
-            raise ValidationError("This student's class schedule is empty!")
+            raise Exception(error_message)
 
 
 
