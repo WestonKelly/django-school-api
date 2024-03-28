@@ -1,0 +1,26 @@
+[
+{
+  "model": "student_app.student",
+  "pk": 2,
+  "fields": {
+    "name": "bob",
+    "student_email": "bob@abc.com",
+    "personal_email": null,
+    "locker_number": 100,
+    "locker_combination": "12-12-12",
+    "good_student": false
+  }
+},
+{
+  "model": "student_app.student",
+  "pk": 3,
+  "fields": {
+    "name": "Francisco A. Ava",
+    "student_email": "anything@school.com",
+    "personal_email": "another@place.com",
+    "locker_number": 120,
+    "locker_combination": "12-12-20",
+    "good_student": true
+  }
+}
+]

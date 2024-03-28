@@ -7,7 +7,7 @@ from .validators import validate_subject_format, validate_professor_name
 class Subject(models.Model):
     subject_name = models.CharField(max_length=50, blank=False, null=False, unique=True, validators=[validate_subject_format])
     professor = models.CharField(max_length=50, blank=False, null=False, default="Mr. Cahan", validators=[validate_professor_name])
-    students = models.ManyToManyField('student_app.Student', related_name='subjects')
+    # students = models.ManyToManyField('student_app.Student', related_name='subjects')
 
     def __str__(self):
         return f"{self.subject_name} - {self.professor} - {self.students}"

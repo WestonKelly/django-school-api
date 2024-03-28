@@ -12,6 +12,7 @@ class Student(models.Model):
     locker_number = models.IntegerField(default=110, unique=True, blank=False, validators=[v.MinValueValidator(1), v.MaxValueValidator(200)])
     locker_combination = models.CharField(blank=False, default="12-12-12", validators=[validate_combination_format])
     good_student = models.BooleanField(default=True, unique=False)
+    subjects = models.ManyToManyField('subject_app.Subject', related_name='students')
 
     
     def __str__(self):
